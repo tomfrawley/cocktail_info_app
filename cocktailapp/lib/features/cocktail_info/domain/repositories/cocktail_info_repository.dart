@@ -2,7 +2,7 @@ import 'package:cocktailapp/core/error/Failures.dart';
 import 'package:dartz/dartz.dart';
 
 abstract class CocktailInfoRepository {
-  Future<Either<Failure, FullDrinkInfoList>> getSearchResultsCocktailInfo(String searchTerm);
+  Future<Either<Failure, FullDrinkInfoList>> getSearchResultsCocktailInfoList(String searchTerm);
   Future<Either<Failure, FullDrinkInfoList>> getAllCocktailsStartingWithTheLetter(String letter);
   Future<Either<Failure, IngredientInfo>> getIngredientInfo(String ingredient);
   Future<Either<Failure, FullDrinkInfo>> getConcreteCocktailInfo(String drink);
