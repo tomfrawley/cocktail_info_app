@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:meta/meta.dart';
 
 class IngredientInfo extends Equatable {
   final int id;
@@ -9,12 +10,12 @@ class IngredientInfo extends Equatable {
   final String abbreviation;
 
   IngredientInfo({
-    this.id,
-    this.name,
-    this.description,
-    this.type,
-    this.containsAlcohol,
-    this.abbreviation,
+    @required this.id,
+    @required this.name,
+    @required this.description,
+    @required this.type,
+    @required this.containsAlcohol,
+    @required this.abbreviation,
   }) : super([
           id,
           name,
@@ -23,4 +24,12 @@ class IngredientInfo extends Equatable {
           containsAlcohol,
           abbreviation,
         ]);
+}
+
+class IngredientInfoList extends Equatable {
+  final List<IngredientInfo> ingredients;
+
+  IngredientInfoList({
+    @required this.ingredients,
+  }) : super([ingredients]);
 }
