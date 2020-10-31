@@ -5,10 +5,10 @@ import 'package:cocktailapp/features/cocktail_info/domain/entities/ingredient_in
 import 'package:dartz/dartz.dart';
 
 abstract class CocktailInfoRepository {
-  Future<Either<Failure, DrinkInfoList>> getSearchResultsCocktailInfoList(String searchTerm);
+  Future<Either<Failure, DrinkInfoList>> getSearchByCocktailResults(String searchTerm);
   Future<Either<Failure, DrinkInfoList>> getAllCocktailsStartingWithTheLetter(String letter);
   Future<Either<Failure, IngredientInfo>> getIngredientInfo(String ingredient);
-  Future<Either<Failure, DrinkInfo>> getConcreteCocktailInfo(String drink);
+  Future<Either<Failure, DrinkInfo>> getCocktailInfoByName(String drink);
   Future<Either<Failure, DrinkInfo>> getRandomCocktailInfo();
   Future<Either<Failure, PartialDrinkInfoList>> getDrinkListFilteredByIngredient(String ingredient);
   Future<Either<Failure, PartialDrinkInfoList>> getDrinkListFilteredByCategory(String category);
