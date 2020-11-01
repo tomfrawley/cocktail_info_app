@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
 
-abstract class DrinkInfoTemplate extends Equatable {
+abstract class CocktailInfoTemplate extends Equatable {
   final int id;
   final String name;
   final String thumbnail;
@@ -10,7 +10,7 @@ abstract class DrinkInfoTemplate extends Equatable {
   final String instructions;
   final List<Map<String, String>> ingredientsAndMeasurements;
 
-  DrinkInfoTemplate({
+  CocktailInfoTemplate({
     this.id,
     this.name,
     this.thumbnail,
@@ -21,7 +21,7 @@ abstract class DrinkInfoTemplate extends Equatable {
   }) : super([id, name, thumbnail, category, glass, instructions, ingredientsAndMeasurements]);
 }
 
-abstract class DrinkInfo extends DrinkInfoTemplate {
+class CocktailInfo extends CocktailInfoTemplate {
   final int id;
   final String name;
   final String thumbnail;
@@ -30,7 +30,7 @@ abstract class DrinkInfo extends DrinkInfoTemplate {
   final String instructions;
   final List<Map<String, String>> ingredientsAndMeasurements;
 
-  DrinkInfo({
+  CocktailInfo({
     @required this.id,
     @required this.name,
     @required this.thumbnail,
@@ -49,19 +49,19 @@ abstract class DrinkInfo extends DrinkInfoTemplate {
         );
 }
 
-class PartialDrinkInfo extends DrinkInfo {
+class PartialCocktailInfo extends CocktailInfoTemplate {
   final int id;
   final String name;
   final String thumbnail;
 
-  PartialDrinkInfo({
+  PartialCocktailInfo({
     @required this.id,
     @required this.name,
     @required this.thumbnail,
   }) : super(id: id, name: name, thumbnail: thumbnail);
 }
 
-class Glass extends DrinkInfoTemplate {
+class Glass extends CocktailInfoTemplate {
   final String glass;
 
   Glass({
@@ -69,7 +69,7 @@ class Glass extends DrinkInfoTemplate {
   }) : super(glass: glass);
 }
 
-class Category extends DrinkInfoTemplate {
+class Category extends CocktailInfoTemplate {
   final String category;
 
   Category({

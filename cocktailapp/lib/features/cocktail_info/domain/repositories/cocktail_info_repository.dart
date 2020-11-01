@@ -5,15 +5,15 @@ import 'package:cocktailapp/features/cocktail_info/domain/entities/ingredient_in
 import 'package:dartz/dartz.dart';
 
 abstract class CocktailInfoRepository {
-  Future<Either<Failure, CategoriesList>> getCategories();
-  Future<Either<Failure, DrinkInfo>> getCocktailInfoByName(String drink);
-  Future<Either<Failure, DrinkInfoList>> getCocktailsByFirstLetter(String letter);
-  Future<Either<Failure, DrinkInfoList>> getCocktailsBySearchResults(String searchTerm);
-  Future<Either<Failure, PartialDrinkInfoList>> getCocktailsFilteredByCategory(String category);
-  Future<Either<Failure, PartialDrinkInfoList>> getCocktailsFilteredByGlass(String glass);
-  Future<Either<Failure, PartialDrinkInfoList>> getCocktailsFilteredByIngredient(String ingredient);
-  Future<Either<Failure, GlassesList>> getGlasses();
+  Future<Either<Failure, Categories>> getCategories();
+  Future<Either<Failure, CocktailInfo>> getCocktailInfoByName(String drink);
+  Future<Either<Failure, CocktailInfoList>> getCocktailsByFirstLetter(String letter);
+  Future<Either<Failure, CocktailInfoList>> getCocktailsBySearchResults(String searchTerm);
+  Future<Either<Failure, PartialCocktailInfoList>> getCocktailsFilteredByCategory(String category);
+  Future<Either<Failure, PartialCocktailInfoList>> getCocktailsFilteredByGlass(String glass);
+  Future<Either<Failure, PartialCocktailInfoList>> getCocktailsFilteredByIngredient(String ingredient);
+  Future<Either<Failure, Glasses>> getGlasses();
   Future<Either<Failure, IngredientInfo>> getIngredientInfo(String ingredient);
   Future<Either<Failure, IngredientInfoList>> getIngredients();
-  Future<Either<Failure, DrinkInfo>> getRandomCocktailInfo();
+  Future<Either<Failure, CocktailInfo>> getRandomCocktailInfo();
 }

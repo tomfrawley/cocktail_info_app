@@ -2,38 +2,38 @@ import 'package:cocktailapp/features/cocktail_info/domain/entities/drink_info.da
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
 
-class DrinkInfoListTemplate extends Equatable {
-  final List<DrinkInfoTemplate> drinkInfoList;
+class CocktailInfoListTemplate extends Equatable {
+  final List<CocktailInfoTemplate> drinkInfoList;
 
-  DrinkInfoListTemplate({
+  CocktailInfoListTemplate({
     @required this.drinkInfoList,
   }) : super([drinkInfoList]);
 }
 
-class DrinkInfoList extends DrinkInfoListTemplate {
-  final List<DrinkInfo> drinkInfoList;
+class CocktailInfoList extends CocktailInfoListTemplate {
+  final List<CocktailInfo> drinkInfoList;
 
-  DrinkInfoList({
+  CocktailInfoList({
     @required this.drinkInfoList,
   }) : super(drinkInfoList: drinkInfoList);
 }
 
-class PartialDrinkInfoList extends DrinkInfoListTemplate {
-  final List<PartialDrinkInfo> partialDrinkInfoList;
+class PartialCocktailInfoList extends CocktailInfoListTemplate {
+  final List<PartialCocktailInfo> partialDrinkInfoList;
 
-  PartialDrinkInfoList({
+  PartialCocktailInfoList({
     @required this.partialDrinkInfoList,
   }) : super(drinkInfoList: partialDrinkInfoList);
 }
 
-class GlassesList extends DrinkInfoListTemplate {
+class Glasses extends CocktailInfoListTemplate {
   final List<Glass> glasses;
 
-  GlassesList({@required this.glasses}) : super(drinkInfoList: glasses);
+  Glasses({@required this.glasses}) : super(drinkInfoList: glasses);
 }
 
-class CategoriesList extends DrinkInfoListTemplate {
+class Categories extends CocktailInfoListTemplate {
   final List<Category> categories;
 
-  CategoriesList({@required this.categories}) : super(drinkInfoList: categories);
+  Categories({@required this.categories}) : super(drinkInfoList: categories);
 }
