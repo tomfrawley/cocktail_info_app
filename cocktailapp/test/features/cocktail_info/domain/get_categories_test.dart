@@ -1,5 +1,5 @@
-import 'package:cocktailapp/features/cocktail_info/domain/entities/drink_info.dart';
-import 'package:cocktailapp/features/cocktail_info/domain/entities/drink_info_list.dart';
+import 'package:cocktailapp/features/cocktail_info/domain/entities/cocktail_info.dart';
+import 'package:cocktailapp/features/cocktail_info/domain/entities/cocktail_info_list.dart';
 import 'package:cocktailapp/features/cocktail_info/domain/repositories/cocktail_info_repository.dart';
 import 'package:cocktailapp/features/cocktail_info/domain/usecases/get_categories.dart';
 import 'package:dartz/dartz.dart';

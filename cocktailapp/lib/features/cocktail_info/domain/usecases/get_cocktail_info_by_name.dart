@@ -1,5 +1,5 @@
 import 'package:cocktailapp/core/error/Failures.dart';
-import 'package:cocktailapp/features/cocktail_info/domain/entities/drink_info.dart';
+import 'package:cocktailapp/features/cocktail_info/domain/entities/cocktail_info.dart';
 import 'package:cocktailapp/features/cocktail_info/domain/repositories/cocktail_info_repository.dart';
 import 'package:dartz/dartz.dart';
 import 'package:meta/meta.dart';
