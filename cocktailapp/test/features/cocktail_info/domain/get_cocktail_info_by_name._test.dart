@@ -1,3 +1,4 @@
+import 'package:cocktailapp/core/usecases/usecase.dart';
 import 'package:cocktailapp/features/cocktail_info/domain/entities/cocktail_info.dart';
 import 'package:cocktailapp/features/cocktail_info/domain/repositories/cocktail_info_repository.dart';
 import 'package:cocktailapp/features/cocktail_info/domain/usecases/get_cocktail_info_by_name.dart';
@@ -30,7 +31,7 @@ void main() {
     //Arrange
     when(mockCocktailInfoRepository.getCocktailInfoByName(tCocktailName)).thenAnswer((realInvocation) async => Right(tCocktailInfo));
     //Act
-    final result = await usecase.execute(tCocktailName);
+    final result = await usecase(Params(lookupTerm: tCocktailName));
     //Assert
     expect(result, Right(tCocktailInfo));
     verify(mockCocktailInfoRepository.getCocktailInfoByName(tCocktailName));

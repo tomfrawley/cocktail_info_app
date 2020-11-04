@@ -1,3 +1,4 @@
+import 'package:cocktailapp/core/usecases/usecase.dart';
 import 'package:cocktailapp/features/cocktail_info/domain/entities/cocktail_info.dart';
 import 'package:cocktailapp/features/cocktail_info/domain/repositories/cocktail_info_repository.dart';
 import 'package:cocktailapp/features/cocktail_info/domain/usecases/get_random_cocktail_info.dart';
@@ -29,7 +30,7 @@ void main() {
     //Arrange
     when(mockCocktailInfoRepository.getRandomCocktailInfo()).thenAnswer((realInvocation) async => Right(tCocktailInfo));
     //Act
-    final result = await usecase.execute();
+    final result = await usecase(NoParams());
     //Assert
     expect(result, Right(tCocktailInfo));
     verify(mockCocktailInfoRepository.getRandomCocktailInfo());

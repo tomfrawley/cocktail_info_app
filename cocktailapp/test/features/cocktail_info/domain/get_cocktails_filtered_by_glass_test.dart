@@ -1,3 +1,4 @@
+import 'package:cocktailapp/core/usecases/usecase.dart';
 import 'package:cocktailapp/features/cocktail_info/domain/entities/cocktail_info.dart';
 import 'package:cocktailapp/features/cocktail_info/domain/entities/cocktail_info_list.dart';
 import 'package:cocktailapp/features/cocktail_info/domain/repositories/cocktail_info_repository.dart';
@@ -25,7 +26,7 @@ void main() {
     //Arrange
     when(mockCocktailInfoRepository.getCocktailsFilteredByGlass(tGlass)).thenAnswer((realInvocation) async => Right(tCocktailInfoList));
     //Act
-    final result = await usecase.execute(tGlass);
+    final result = await usecase(Params(lookupTerm: tGlass));
     //Assert
     expect(result, Right(tCocktailInfoList));
     verify(mockCocktailInfoRepository.getCocktailsFilteredByGlass(tGlass));
