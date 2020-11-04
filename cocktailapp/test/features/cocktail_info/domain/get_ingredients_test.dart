@@ -18,9 +18,7 @@ void main() {
     usecase = GetIngredients(mockCocktailInfoRepository);
   });
 
-  final tIngredients = Ingredients(ingredients: [
-    Ingredient(ingredientsAndMeasurements: {'test ingredient': ''})
-  ]);
+  final tIngredients = Ingredients(ingredients: [Ingredient(ingredient: 'ingredient')]);
 
   test('should get Right(Ingredients) from the repository', () async {
     //Arrange
