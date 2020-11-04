@@ -14,6 +14,6 @@ abstract class CocktailInfoRepository {
   Future<Either<Failure, PartialCocktailInfoList>> getCocktailsFilteredByIngredient(String ingredient);
   Future<Either<Failure, Glasses>> getGlasses();
   Future<Either<Failure, IngredientInfo>> getIngredientInfo(String ingredient);
-  Future<Either<Failure, IngredientInfoList>> getIngredients();
+  Future<Either<Failure, Ingredients>> getIngredients();
   Future<Either<Failure, CocktailInfo>> getRandomCocktailInfo();
 }

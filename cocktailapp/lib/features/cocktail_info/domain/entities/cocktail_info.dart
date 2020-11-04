@@ -8,7 +8,7 @@ abstract class CocktailInfoTemplate extends Equatable {
   final String category;
   final String glass;
   final String instructions;
-  final List<Map<String, String>> ingredientsAndMeasurements;
+  final Map<String, String> ingredientsAndMeasurements;
 
   CocktailInfoTemplate({
     this.id,
@@ -28,7 +28,7 @@ class CocktailInfo extends CocktailInfoTemplate {
   final String category;
   final String glass;
   final String instructions;
-  final List<Map<String, String>> ingredientsAndMeasurements;
+  final Map<String, String> ingredientsAndMeasurements;
 
   CocktailInfo({
     @required this.id,
@@ -75,4 +75,12 @@ class Category extends CocktailInfoTemplate {
   Category({
     @required this.category,
   }) : super(category: category);
+}
+
+class Ingredient extends CocktailInfoTemplate {
+  final Map<String, String> ingredientsAndMeasurements;
+
+  Ingredient({
+    @required this.ingredientsAndMeasurements,
+  }) : super(ingredientsAndMeasurements: ingredientsAndMeasurements);
 }

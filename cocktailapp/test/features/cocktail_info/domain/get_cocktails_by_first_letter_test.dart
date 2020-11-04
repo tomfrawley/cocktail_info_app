@@ -25,12 +25,10 @@ void main() {
       category: 'testcat',
       glass: 'testglass',
       instructions: 'testInstruc',
-      ingredientsAndMeasurements: [
-        {'test ingredients': 'test measures'}
-      ]);
+      ingredientsAndMeasurements: {'test ingredients': 'test measures'});
   final tCocktailInfoList = CocktailInfoList(cocktailInfoList: [tCocktailInfo]);
 
-  test('should get CocktailInfoList for cocktails that start with a specified letter from repository', () async {
+  test('should get Right(CocktailInfoList) for cocktails that start with a specified letter from repository', () async {
     //Arrange
     when(mockCocktailInfoRepository.getCocktailsByFirstLetter(tLetter)).thenAnswer((realInvocation) async => Right(tCocktailInfoList));
     //Act

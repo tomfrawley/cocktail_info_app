@@ -37,3 +37,9 @@ class Categories extends CocktailInfoListTemplate {
 
   Categories({@required this.categories}) : super(cocktailInfoList: categories);
 }
+
+class Ingredients extends CocktailInfoListTemplate {
+  final List<Ingredient> ingredients;
+
+  Ingredients({@required this.ingredients}) : super(cocktailInfoList: ingredients);
+}

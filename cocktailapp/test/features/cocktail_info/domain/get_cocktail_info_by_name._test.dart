@@ -24,11 +24,9 @@ void main() {
       category: 'testcat',
       glass: 'testglass',
       instructions: 'testInstruc',
-      ingredientsAndMeasurements: [
-        {'test ingredients': 'test measures'}
-      ]);
+      ingredientsAndMeasurements: {'test ingredients': 'test measures'});
 
-  test('should get DrinkInfo for the name from repository', () async {
+  test('should get Right(CocktailInfo) by the name from repository', () async {
     //Arrange
     when(mockCocktailInfoRepository.getCocktailInfoByName(tCocktailName)).thenAnswer((realInvocation) async => Right(tCocktailInfo));
     //Act

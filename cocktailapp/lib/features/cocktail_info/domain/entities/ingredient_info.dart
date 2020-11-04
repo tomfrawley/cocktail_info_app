@@ -25,11 +25,3 @@ class IngredientInfo extends Equatable {
           abbreviation,
         ]);
 }
-
-class IngredientInfoList extends Equatable {
-  final List<IngredientInfo> ingredients;
-
-  IngredientInfoList({
-    @required this.ingredients,
-  }) : super([ingredients]);
-}
