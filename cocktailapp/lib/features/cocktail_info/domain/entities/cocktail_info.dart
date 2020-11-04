@@ -78,9 +78,9 @@ class Category extends CocktailInfoTemplate {
 }
 
 class Ingredient extends CocktailInfoTemplate {
-  final Map<String, String> ingredientsAndMeasurements;
+  final String ingredient;
 
   Ingredient({
-    @required this.ingredientsAndMeasurements,
-  }) : super(ingredientsAndMeasurements: ingredientsAndMeasurements);
+    @required this.ingredient,
+  }) : super(ingredientsAndMeasurements: {ingredient: ''});
 }
