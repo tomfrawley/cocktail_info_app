@@ -17,4 +17,14 @@ class IngredientInfoModel extends IngredientInfo {
           containsAlcohol: containsAlcohol,
           abbreviation: abbreviation,
         );
+
+  factory IngredientInfoModel.fromJson(Map<String, dynamic> json) {
+    return IngredientInfoModel(
+        id: int.parse(json['idIngredient']),
+        name: json['strIngredient'],
+        description: json['strDescription'],
+        type: json['strType'],
+        containsAlcohol: (json['strAlcohol'] == null) ? false : true,
+        abbreviation: json['strABV']);
+  }
 }

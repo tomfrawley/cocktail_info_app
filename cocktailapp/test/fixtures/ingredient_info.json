@@ -5,5 +5,5 @@
     "strDescription":"Test",
     "strType":"Test",
     "strAlcohol":null,
-    "strABV":null
+    "strABV":"Test"
 }
