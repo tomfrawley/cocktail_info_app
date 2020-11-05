@@ -20,23 +20,13 @@ class CocktailInfoModel extends CocktailInfo {
             ingredientsAndMeasurements: ingredientsAndMeasurements);
 
   factory CocktailInfoModel.fromJson(Map<String, dynamic> json) {
-    Map<String, String> ingredientsAndMeasurementsMap = {
-      json['strIngredient1']: json['strMeasure1'],
-      json['strIngredient2']: json['strMeasure2'],
-      json['strIngredient3']: json['strMeasure3'],
-      json['strIngredient4']: json['strMeasure4'],
-      json['strIngredient5']: json['strMeasure5'],
-      json['strIngredient6']: json['strMeasure6'],
-      json['strIngredient7']: json['strMeasure7'],
-      json['strIngredient8']: json['strMeasure8'],
-      json['strIngredient9']: json['strMeasure9'],
-      json['strIngredient10']: json['strMeasure10'],
-      json['strIngredient11']: json['strMeasure11'],
-      json['strIngredient12']: json['strMeasure12'],
-      json['strIngredient13']: json['strMeasure13'],
-      json['strIngredient14']: json['strMeasure14'],
-      json['strIngredient15']: json['strMeasure15'],
-    };
+    Map<String, String> ingredientsAndMeasurementsMap = {};
+
+    for (int i = 1; i < 16; i++) {
+      if (json['strIngredient$i'] != null) {
+        ingredientsAndMeasurementsMap[json['strIngredient$i']] = (json['strMeasure$i'] != null) ? json['strMeasure$i'] : '';
+      }
+    }
 
     return CocktailInfoModel(
       id: int.parse(json['idDrink']),

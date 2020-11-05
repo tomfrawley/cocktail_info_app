@@ -19,7 +19,7 @@
     "strIngredient12":"Test12",
     "strIngredient13":"Test13",
     "strIngredient14":"Test14",
-    "strIngredient15":"Test15",
+    "strIngredient15":null,
     "strMeasure1":"Test",
     "strMeasure2":"Test2",
     "strMeasure3":"Test3",
@@ -33,6 +33,6 @@
     "strMeasure11":"Test11",
     "strMeasure12":"Test12",
     "strMeasure13":"Test13",
-    "strMeasure14":"Test14",
-    "strMeasure15":"Test15"
+    "strMeasure14":null,
+    "strMeasure15":null
 }

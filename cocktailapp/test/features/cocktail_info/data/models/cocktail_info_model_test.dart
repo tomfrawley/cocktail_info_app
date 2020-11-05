@@ -28,8 +28,7 @@ void main() {
       'Test11': 'Test11',
       'Test12': 'Test12',
       'Test13': 'Test13',
-      'Test14': 'Test14',
-      'Test15': 'Test15',
+      'Test14': '',
     },
   );
   final tPartialCocktailInfoModel = PartialCocktailInfoModel(

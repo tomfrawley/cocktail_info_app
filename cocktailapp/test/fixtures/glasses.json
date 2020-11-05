@@ -1,0 +1,6 @@
+{
+    "drinks" : [
+        {"strGlass" : "Test1"},
+        {"strGlass" : "Test2"}
+    ]
+}

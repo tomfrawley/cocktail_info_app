@@ -1,0 +1,6 @@
+{
+    "drinks": [
+        {"idDrink":"1","strDrink":"Test","strDrinkThumb":"Test"},
+        {"idDrink":"2","strDrink":"Test2","strDrinkThumb":"Test2"}
+    ]
+}

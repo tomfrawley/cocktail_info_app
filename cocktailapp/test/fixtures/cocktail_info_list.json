@@ -1,0 +1,6 @@
+{
+    "drinks": [
+        {"idDrink":"1","strDrink":"Test1","strCategory":"Test1","strGlass":"Test1","strInstructions":"Test1","strDrinkThumb":"Test1","strIngredient1":"Test1","strIngredient2":"Test2","strMeasure1":"Test1","strMeasure2":null},
+        {"idDrink":"2","strDrink":"Test2","strCategory":"Test2","strGlass":"Test2","strInstructions":"Test2","strDrinkThumb":"Test2","strIngredient1":"Test2","strIngredient2":"Test3","strMeasure1":"Test2","strMeasure2":null}
+    ]
+}

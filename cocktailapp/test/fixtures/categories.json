@@ -1,0 +1,6 @@
+{
+    "drinks" : [
+        {"strCategory" : "Test1"},
+        {"strCategory" : "Test2"}
+    ]
+}

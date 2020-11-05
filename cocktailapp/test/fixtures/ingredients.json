@@ -1,0 +1,6 @@
+{
+    "drinks" : [
+        {"strIngredient1" : "Test1"},
+        {"strIngredient1" : "Test2"}
+    ]
+}
