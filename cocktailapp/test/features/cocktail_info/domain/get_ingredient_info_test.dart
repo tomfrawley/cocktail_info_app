@@ -1,7 +1,7 @@
 import 'package:cocktailapp/core/usecases/usecase.dart';
 import 'package:cocktailapp/features/cocktail_info/domain/entities/ingredient_info.dart';
 import 'package:cocktailapp/features/cocktail_info/domain/repositories/cocktail_info_repository.dart';
-import 'package:cocktailapp/features/cocktail_info/domain/usecases/get_ingredient_info.dart';
+import 'package:cocktailapp/features/cocktail_info/domain/usecases/get_ingredient_info_by_id.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
@@ -9,15 +9,15 @@ import 'package:mockito/mockito.dart';
 class MockCocktailInfoRepository extends Mock implements CocktailInfoRepository {}
 
 void main() {
-  GetIngredientInfo usecase;
+  GetIngredientInfoById usecase;
   MockCocktailInfoRepository mockCocktailInfoRepository;
 
   setUp(() {
     mockCocktailInfoRepository = MockCocktailInfoRepository();
-    usecase = GetIngredientInfo(mockCocktailInfoRepository);
+    usecase = GetIngredientInfoById(mockCocktailInfoRepository);
   });
 
-  final tIngredientName = 'test';
+  final tIngredientId = 1;
   final tIngredientInfo = IngredientInfo(
     id: 1,
     name: 'test',
@@ -29,12 +29,12 @@ void main() {
 
   test('should get Right(CocktailInfo) by the name from repository', () async {
     //Arrange
-    when(mockCocktailInfoRepository.getIngredientInfo(tIngredientName)).thenAnswer((realInvocation) async => Right(tIngredientInfo));
+    when(mockCocktailInfoRepository.getIngredientInfoById(tIngredientId)).thenAnswer((realInvocation) async => Right(tIngredientInfo));
     //Act
-    final result = await usecase(Params(lookupTerm: tIngredientName));
+    final result = await usecase(Params(id: tIngredientId));
     //Assert
     expect(result, Right(tIngredientInfo));
-    verify(mockCocktailInfoRepository.getIngredientInfo(tIngredientName));
+    verify(mockCocktailInfoRepository.getIngredientInfoById(tIngredientId));
     verifyNoMoreInteractions(mockCocktailInfoRepository);
   });
 }

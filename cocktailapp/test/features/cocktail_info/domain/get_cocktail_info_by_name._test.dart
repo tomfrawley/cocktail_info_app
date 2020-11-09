@@ -1,7 +1,7 @@
 import 'package:cocktailapp/core/usecases/usecase.dart';
 import 'package:cocktailapp/features/cocktail_info/domain/entities/cocktail_info.dart';
 import 'package:cocktailapp/features/cocktail_info/domain/repositories/cocktail_info_repository.dart';
-import 'package:cocktailapp/features/cocktail_info/domain/usecases/get_cocktail_info_by_name.dart';
+import 'package:cocktailapp/features/cocktail_info/domain/usecases/get_cocktail_info_by_id.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
@@ -9,15 +9,15 @@ import 'package:mockito/mockito.dart';
 class MockCocktailInfoRepository extends Mock implements CocktailInfoRepository {}
 
 void main() {
-  GetCocktailInfoByName usecase;
+  GetCocktailInfoById usecase;
   MockCocktailInfoRepository mockCocktailInfoRepository;
 
   setUp(() {
     mockCocktailInfoRepository = MockCocktailInfoRepository();
-    usecase = GetCocktailInfoByName(mockCocktailInfoRepository);
+    usecase = GetCocktailInfoById(mockCocktailInfoRepository);
   });
 
-  final tCocktailName = 'test';
+  final tCocktailId = 1;
   final tCocktailInfo = CocktailInfo(
       id: 1,
       name: 'test',
@@ -29,12 +29,12 @@ void main() {
 
   test('should get Right(CocktailInfo) by the name from repository', () async {
     //Arrange
-    when(mockCocktailInfoRepository.getCocktailInfoByName(tCocktailName)).thenAnswer((realInvocation) async => Right(tCocktailInfo));
+    when(mockCocktailInfoRepository.getCocktailInfoById(tCocktailId)).thenAnswer((realInvocation) async => Right(tCocktailInfo));
     //Act
-    final result = await usecase(Params(lookupTerm: tCocktailName));
+    final result = await usecase(Params(id: tCocktailId));
     //Assert
     expect(result, Right(tCocktailInfo));
-    verify(mockCocktailInfoRepository.getCocktailInfoByName(tCocktailName));
+    verify(mockCocktailInfoRepository.getCocktailInfoById(tCocktailId));
     verifyNoMoreInteractions(mockCocktailInfoRepository);
   });
 }
