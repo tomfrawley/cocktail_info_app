@@ -1,4 +1,4 @@
-import 'package:cocktailapp/core/error/Failures.dart';
+import 'package:cocktailapp/core/error/failures.dart';
 import 'package:cocktailapp/core/usecases/usecase.dart';
 import 'package:cocktailapp/features/cocktail_info/domain/entities/cocktail_info.dart';
 import 'package:cocktailapp/features/cocktail_info/domain/repositories/cocktail_info_repository.dart';

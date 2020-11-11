@@ -1,4 +1,4 @@
-import 'package:cocktailapp/core/error/Failures.dart';
+import 'package:cocktailapp/core/error/failures.dart';
 import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 
