@@ -8,16 +8,21 @@ import 'package:cocktailapp/features/cocktail_info/domain/entities/cocktail_info
 import 'package:cocktailapp/features/cocktail_info/domain/repositories/cocktail_info_repository.dart';
 import 'package:dartz/dartz.dart';
 
+typedef Future<PartialCocktailInfoList> _PartialListChooser();
+typedef Future<CocktailInfoList> _CocktailInfoListChooser();
+typedef Future<CocktailInfo> _CocktailInfoChooser();
+
 class CocktailInfoRepositoryImpl implements CocktailInfoRepository {
   final CocktailInfoRemoteDataSource remoteDataSource;
   final NetworkInfo networkInfo;
 
   CocktailInfoRepositoryImpl({this.remoteDataSource, this.networkInfo});
 
-  dynamic _accessCocktailRemoteDataSource(Function call) async {
+  @override
+  Future<Either<Failure, Categories>> getCategories() async {
     if (await networkInfo.isConnected) {
       try {
-        return Right(await call);
+        return Right(await remoteDataSource.getCategories());
       } on ServerException {
         return Left(ServerFailure());
       }
@@ -27,79 +32,126 @@ class CocktailInfoRepositoryImpl implements CocktailInfoRepository {
   }
 
   @override
-  Future<Either<Failure, Categories>> getCategories() async {
-    return _accessCocktailRemoteDataSource(() {
-      remoteDataSource.getCategories();
-    });
-  }
-
-  @override
   Future<Either<Failure, CocktailInfo>> getCocktailInfoById(int cocktailId) async {
-    return _accessCocktailRemoteDataSource(() {
-      remoteDataSource.getCocktailInfoById(cocktailId);
+    return await _getCocktailInfo(() {
+      return remoteDataSource.getCocktailInfoById(cocktailId);
     });
   }
 
   @override
   Future<Either<Failure, CocktailInfoList>> getCocktailsByFirstLetter(String letter) async {
-    return _accessCocktailRemoteDataSource(() {
-      remoteDataSource.getCocktailsByFirstLetter(letter);
+    return await _getCocktailInfoList(() {
+      return remoteDataSource.getCocktailsByFirstLetter(letter);
     });
   }
 
   @override
   Future<Either<Failure, CocktailInfoList>> getCocktailsBySearchResults(String searchTerm) async {
-    return _accessCocktailRemoteDataSource(() {
-      remoteDataSource.getCocktailsBySearchResults(searchTerm);
+    return await _getCocktailInfoList(() {
+      return remoteDataSource.getCocktailsBySearchResults(searchTerm);
     });
   }
 
   @override
   Future<Either<Failure, PartialCocktailInfoList>> getCocktailsFilteredByCategory(String category) async {
-    return _accessCocktailRemoteDataSource(() {
-      remoteDataSource.getCocktailsFilteredByCategory(category);
+    return await _getPartialCocktailInfoList(() {
+      return remoteDataSource.getCocktailsFilteredByCategory(category);
     });
   }
 
   @override
   Future<Either<Failure, PartialCocktailInfoList>> getCocktailsFilteredByGlass(String glass) async {
-    return _accessCocktailRemoteDataSource(() {
-      remoteDataSource.getCocktailsFilteredByGlass(glass);
+    return await _getPartialCocktailInfoList(() {
+      return remoteDataSource.getCocktailsFilteredByGlass(glass);
     });
   }
 
   @override
   Future<Either<Failure, PartialCocktailInfoList>> getCocktailsFilteredByIngredient(String ingredient) async {
-    return _accessCocktailRemoteDataSource(() {
-      remoteDataSource.getCocktailsFilteredByIngredient(ingredient);
+    return await _getPartialCocktailInfoList(() {
+      return remoteDataSource.getCocktailsFilteredByIngredient(ingredient);
     });
   }
 
   @override
   Future<Either<Failure, Glasses>> getGlasses() async {
-    return _accessCocktailRemoteDataSource(() {
-      remoteDataSource.getGlasses();
-    });
+    if (await networkInfo.isConnected) {
+      try {
+        return Right(await remoteDataSource.getGlasses());
+      } on ServerException {
+        return Left(ServerFailure());
+      }
+    } else {
+      return Left(NetworkFailure());
+    }
   }
 
   @override
   Future<Either<Failure, IngredientInfo>> getIngredientInfoById(int ingredientId) async {
-    return _accessCocktailRemoteDataSource(() {
-      remoteDataSource.getIngredientInfoById(ingredientId);
-    });
+    if (await networkInfo.isConnected) {
+      try {
+        return Right(await remoteDataSource.getIngredientInfoById(ingredientId));
+      } on ServerException {
+        return Left(ServerFailure());
+      }
+    } else {
+      return Left(NetworkFailure());
+    }
   }
 
   @override
   Future<Either<Failure, Ingredients>> getIngredients() async {
-    return _accessCocktailRemoteDataSource(() {
-      remoteDataSource.getIngredients();
-    });
+    if (await networkInfo.isConnected) {
+      try {
+        return Right(await remoteDataSource.getIngredients());
+      } on ServerException {
+        return Left(ServerFailure());
+      }
+    } else {
+      return Left(NetworkFailure());
+    }
   }
 
   @override
   Future<Either<Failure, CocktailInfo>> getRandomCocktailInfo() async {
-    return _accessCocktailRemoteDataSource(() {
-      remoteDataSource.getRandomCocktialInfo();
+    return await _getCocktailInfo(() {
+      return remoteDataSource.getRandomCocktialInfo();
     });
+  }
+
+  Future<Either<Failure, CocktailInfo>> _getCocktailInfo(_CocktailInfoChooser typeChooser) async {
+    if (await networkInfo.isConnected) {
+      try {
+        return Right(await typeChooser());
+      } on ServerException {
+        return Left(ServerFailure());
+      }
+    } else {
+      return Left(NetworkFailure());
+    }
+  }
+
+  Future<Either<Failure, CocktailInfoList>> _getCocktailInfoList(_CocktailInfoListChooser typeChooser) async {
+    if (await networkInfo.isConnected) {
+      try {
+        return Right(await typeChooser());
+      } on ServerException {
+        return Left(ServerFailure());
+      }
+    } else {
+      return Left(NetworkFailure());
+    }
+  }
+
+  Future<Either<Failure, PartialCocktailInfoList>> _getPartialCocktailInfoList(_PartialListChooser typeChooser) async {
+    if (await networkInfo.isConnected) {
+      try {
+        return Right(await typeChooser());
+      } on ServerException {
+        return Left(ServerFailure());
+      }
+    } else {
+      return Left(NetworkFailure());
+    }
   }
 }
