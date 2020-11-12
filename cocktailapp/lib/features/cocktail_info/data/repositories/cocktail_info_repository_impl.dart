@@ -41,56 +41,119 @@ class CocktailInfoRepositoryImpl implements CocktailInfoRepository {
   }
 
   @override
-  Future<Either<Failure, CocktailInfoList>> getCocktailsByFirstLetter(String letter) {
-    // TODO: implement getCocktailsByFirstLetter
-    throw UnimplementedError();
+  Future<Either<Failure, CocktailInfoList>> getCocktailsByFirstLetter(String letter) async {
+    if (await networkInfo.isConnected) {
+      try {
+        return Right(await remoteDataSource.getCocktailsByFirstLetter(letter));
+      } on ServerException {
+        return Left(ServerFailure());
+      }
+    } else {
+      return Left(NetworkFailure());
+    }
   }
 
   @override
-  Future<Either<Failure, CocktailInfoList>> getCocktailsBySearchResults(String searchTerm) {
-    // TODO: implement getCocktailsBySearchResults
-    throw UnimplementedError();
+  Future<Either<Failure, CocktailInfoList>> getCocktailsBySearchResults(String searchTerm) async {
+    if (await networkInfo.isConnected) {
+      try {
+        return Right(await remoteDataSource.getCocktailsBySearchResults(searchTerm));
+      } on ServerException {
+        return Left(ServerFailure());
+      }
+    } else {
+      return Left(NetworkFailure());
+    }
   }
 
   @override
-  Future<Either<Failure, PartialCocktailInfoList>> getCocktailsFilteredByCategory(String category) {
-    // TODO: implement getCocktailsFilteredByCategory
-    throw UnimplementedError();
+  Future<Either<Failure, PartialCocktailInfoList>> getCocktailsFilteredByCategory(String category) async {
+    if (await networkInfo.isConnected) {
+      try {
+        return Right(await remoteDataSource.getCocktailsFilteredByCategory(category));
+      } on ServerException {
+        return Left(ServerFailure());
+      }
+    } else {
+      return Left(NetworkFailure());
+    }
   }
 
   @override
-  Future<Either<Failure, PartialCocktailInfoList>> getCocktailsFilteredByGlass(String glass) {
-    // TODO: implement getCocktailsFilteredByGlass
-    throw UnimplementedError();
+  Future<Either<Failure, PartialCocktailInfoList>> getCocktailsFilteredByGlass(String glass) async {
+    if (await networkInfo.isConnected) {
+      try {
+        return Right(await remoteDataSource.getCocktailsFilteredByGlass(glass));
+      } on ServerException {
+        return Left(ServerFailure());
+      }
+    } else {
+      return Left(NetworkFailure());
+    }
   }
 
   @override
-  Future<Either<Failure, PartialCocktailInfoList>> getCocktailsFilteredByIngredient(String ingredient) {
-    // TODO: implement getCocktailsFilteredByIngredient
-    throw UnimplementedError();
+  Future<Either<Failure, PartialCocktailInfoList>> getCocktailsFilteredByIngredient(String ingredient) async {
+    if (await networkInfo.isConnected) {
+      try {
+        return Right(await remoteDataSource.getCocktailsFilteredByIngredient(ingredient));
+      } on ServerException {
+        return Left(ServerFailure());
+      }
+    } else {
+      return Left(NetworkFailure());
+    }
   }
 
   @override
-  Future<Either<Failure, Glasses>> getGlasses() {
-    // TODO: implement getGlasses
-    throw UnimplementedError();
+  Future<Either<Failure, Glasses>> getGlasses() async {
+    if (await networkInfo.isConnected) {
+      try {
+        return Right(await remoteDataSource.getGlasses());
+      } on ServerException {
+        return Left(ServerFailure());
+      }
+    } else {
+      return Left(NetworkFailure());
+    }
   }
 
   @override
-  Future<Either<Failure, IngredientInfo>> getIngredientInfoById(int ingredientId) {
-    // TODO: implement getIngredientInfo
-    throw UnimplementedError();
+  Future<Either<Failure, IngredientInfo>> getIngredientInfoById(int ingredientId) async {
+    if (await networkInfo.isConnected) {
+      try {
+        return Right(await remoteDataSource.getIngredientInfoById(ingredientId));
+      } on ServerException {
+        return Left(ServerFailure());
+      }
+    } else {
+      return Left(NetworkFailure());
+    }
   }
 
   @override
-  Future<Either<Failure, Ingredients>> getIngredients() {
-    // TODO: implement getIngredients
-    throw UnimplementedError();
+  Future<Either<Failure, Ingredients>> getIngredients() async {
+    if (await networkInfo.isConnected) {
+      try {
+        return Right(await remoteDataSource.getIngredients());
+      } on ServerException {
+        return Left(ServerFailure());
+      }
+    } else {
+      return Left(NetworkFailure());
+    }
   }
 
   @override
-  Future<Either<Failure, CocktailInfo>> getRandomCocktailInfo() {
-    // TODO: implement getRandomCocktailInfo
-    throw UnimplementedError();
+  Future<Either<Failure, CocktailInfo>> getRandomCocktailInfo() async {
+    if (await networkInfo.isConnected) {
+      try {
+        return Right(await remoteDataSource.getRandomCocktialInfo());
+      } on ServerException {
+        return Left(ServerFailure());
+      }
+    } else {
+      return Left(NetworkFailure());
+    }
   }
 }

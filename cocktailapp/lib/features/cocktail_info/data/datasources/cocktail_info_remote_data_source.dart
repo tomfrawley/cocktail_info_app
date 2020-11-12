@@ -46,7 +46,7 @@ abstract class CocktailInfoRemoteDataSource {
   /// Calls the https://www.thecocktaildb.com/api/json/v1/1/lookup.php?iid={ingredientID} endpoint.
   ///
   /// Throws a [Server Exception] for all error codes.
-  Future<IngredientInfo> getIngredientInfoById(int ingredientID) {}
+  Future<IngredientInfo> getIngredientInfoById(int ingredientId) {}
 
   /// Calls the https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list endpoint.
   ///
