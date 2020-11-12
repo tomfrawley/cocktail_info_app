@@ -14,7 +14,7 @@ class CocktailInfoRepositoryImpl implements CocktailInfoRepository {
 
   CocktailInfoRepositoryImpl({this.remoteDataSource, this.networkInfo});
 
-  dynamic accessCocktailAPI(Function call) async {
+  dynamic _accessCocktailRemoteDataSource(Function call) async {
     if (await networkInfo.isConnected) {
       try {
         return Right(await call);
@@ -28,77 +28,77 @@ class CocktailInfoRepositoryImpl implements CocktailInfoRepository {
 
   @override
   Future<Either<Failure, Categories>> getCategories() async {
-    return accessCocktailAPI(() {
+    return _accessCocktailRemoteDataSource(() {
       remoteDataSource.getCategories();
     });
   }
 
   @override
   Future<Either<Failure, CocktailInfo>> getCocktailInfoById(int cocktailId) async {
-    return accessCocktailAPI(() {
+    return _accessCocktailRemoteDataSource(() {
       remoteDataSource.getCocktailInfoById(cocktailId);
     });
   }
 
   @override
   Future<Either<Failure, CocktailInfoList>> getCocktailsByFirstLetter(String letter) async {
-    return accessCocktailAPI(() {
+    return _accessCocktailRemoteDataSource(() {
       remoteDataSource.getCocktailsByFirstLetter(letter);
     });
   }
 
   @override
   Future<Either<Failure, CocktailInfoList>> getCocktailsBySearchResults(String searchTerm) async {
-    return accessCocktailAPI(() {
+    return _accessCocktailRemoteDataSource(() {
       remoteDataSource.getCocktailsBySearchResults(searchTerm);
     });
   }
 
   @override
   Future<Either<Failure, PartialCocktailInfoList>> getCocktailsFilteredByCategory(String category) async {
-    return accessCocktailAPI(() {
+    return _accessCocktailRemoteDataSource(() {
       remoteDataSource.getCocktailsFilteredByCategory(category);
     });
   }
 
   @override
   Future<Either<Failure, PartialCocktailInfoList>> getCocktailsFilteredByGlass(String glass) async {
-    return accessCocktailAPI(() {
+    return _accessCocktailRemoteDataSource(() {
       remoteDataSource.getCocktailsFilteredByGlass(glass);
     });
   }
 
   @override
   Future<Either<Failure, PartialCocktailInfoList>> getCocktailsFilteredByIngredient(String ingredient) async {
-    return accessCocktailAPI(() {
+    return _accessCocktailRemoteDataSource(() {
       remoteDataSource.getCocktailsFilteredByIngredient(ingredient);
     });
   }
 
   @override
   Future<Either<Failure, Glasses>> getGlasses() async {
-    return accessCocktailAPI(() {
+    return _accessCocktailRemoteDataSource(() {
       remoteDataSource.getGlasses();
     });
   }
 
   @override
   Future<Either<Failure, IngredientInfo>> getIngredientInfoById(int ingredientId) async {
-    return accessCocktailAPI(() {
+    return _accessCocktailRemoteDataSource(() {
       remoteDataSource.getIngredientInfoById(ingredientId);
     });
   }
 
   @override
   Future<Either<Failure, Ingredients>> getIngredients() async {
-    return accessCocktailAPI(() {
+    return _accessCocktailRemoteDataSource(() {
       remoteDataSource.getIngredients();
     });
   }
 
   @override
   Future<Either<Failure, CocktailInfo>> getRandomCocktailInfo() async {
-    return accessCocktailAPI(() {
+    return _accessCocktailRemoteDataSource(() {
       remoteDataSource.getRandomCocktialInfo();
     });
   }
