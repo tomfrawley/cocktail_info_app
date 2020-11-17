@@ -1,6 +1,6 @@
 import 'package:cocktailapp/core/error/exception.dart';
 import 'package:cocktailapp/core/error/failures.dart';
-import 'package:cocktailapp/core/platform/network_info.dart';
+import 'package:cocktailapp/core/network/network_info.dart';
 import 'package:cocktailapp/features/cocktail_info/data/datasources/cocktail_info_remote_data_source.dart';
 import 'package:cocktailapp/features/cocktail_info/data/models/cocktail_info_list_model.dart';
 import 'package:cocktailapp/features/cocktail_info/data/models/cocktail_info_model.dart';

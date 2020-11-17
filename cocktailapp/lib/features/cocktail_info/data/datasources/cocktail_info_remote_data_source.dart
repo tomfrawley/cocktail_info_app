@@ -1,6 +1,8 @@
 import 'package:cocktailapp/features/cocktail_info/domain/entities/cocktail_info.dart';
 import 'package:cocktailapp/features/cocktail_info/domain/entities/cocktail_info_list.dart';
 import 'package:cocktailapp/features/cocktail_info/domain/entities/ingredient_info.dart';
+import 'package:http/http.dart' as http;
+import 'package:meta/meta.dart';
 
 abstract class CocktailInfoRemoteDataSource {
   /// Calls the https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list endpoint.
@@ -57,4 +59,76 @@ abstract class CocktailInfoRemoteDataSource {
   ///
   /// Throws a [Server Exception] for all error codes.
   Future<CocktailInfo> getRandomCocktialInfo() {}
+}
+
+class CocktailInfoRemoteDataSourceImpl implements CocktailInfoRemoteDataSource {
+  final http.Client client;
+
+  CocktailInfoRemoteDataSourceImpl({@required this.client});
+
+  @override
+  Future<Categories> getCategories() {
+    // TODO: implement getCategories
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<CocktailInfo> getCocktailInfoById(int cocktailId) {
+    // TODO: implement getCocktailInfoById
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<CocktailInfoList> getCocktailsByFirstLetter(String letter) {
+    // TODO: implement getCocktailsByFirstLetter
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<CocktailInfoList> getCocktailsBySearchResults(String searchTerm) {
+    // TODO: implement getCocktailsBySearchResults
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<PartialCocktailInfoList> getCocktailsFilteredByCategory(String category) {
+    // TODO: implement getCocktailsFilteredByCategory
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<PartialCocktailInfoList> getCocktailsFilteredByGlass(String glass) {
+    // TODO: implement getCocktailsFilteredByGlass
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<PartialCocktailInfoList> getCocktailsFilteredByIngredient(String ingredient) {
+    // TODO: implement getCocktailsFilteredByIngredient
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<Glasses> getGlasses() {
+    // TODO: implement getGlasses
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<IngredientInfo> getIngredientInfoById(int ingredientId) {
+    // TODO: implement getIngredientInfoById
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<Ingredients> getIngredients() {
+    // TODO: implement getIngredients
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<CocktailInfo> getRandomCocktialInfo() {
+    // TODO: implement getRandomCocktialInfo
+    throw UnimplementedError();
+  }
 }
