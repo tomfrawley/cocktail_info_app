@@ -1,3 +1,9 @@
+import 'dart:convert';
+
+import 'package:cocktailapp/core/error/exception.dart';
+import 'package:cocktailapp/features/cocktail_info/data/models/cocktail_info_list_model.dart';
+import 'package:cocktailapp/features/cocktail_info/data/models/cocktail_info_model.dart';
+import 'package:cocktailapp/features/cocktail_info/data/models/ingredient_info_model.dart';
 import 'package:cocktailapp/features/cocktail_info/domain/entities/cocktail_info.dart';
 import 'package:cocktailapp/features/cocktail_info/domain/entities/cocktail_info_list.dart';
 import 'package:cocktailapp/features/cocktail_info/domain/entities/ingredient_info.dart';
@@ -67,68 +73,156 @@ class CocktailInfoRemoteDataSourceImpl implements CocktailInfoRemoteDataSource {
   CocktailInfoRemoteDataSourceImpl({@required this.client});
 
   @override
-  Future<Categories> getCategories() {
-    // TODO: implement getCategories
-    throw UnimplementedError();
+  Future<Categories> getCategories() async {
+    final response = await client.get(
+      'https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list',
+      headers: {'Content-Type': 'application/json'},
+    );
+
+    if (response.statusCode == 200) {
+      return CategoriesModel.fromJson(json.decode(response.body));
+    } else {
+      throw ServerException();
+    }
   }
 
   @override
-  Future<CocktailInfo> getCocktailInfoById(int cocktailId) {
-    // TODO: implement getCocktailInfoById
-    throw UnimplementedError();
+  Future<CocktailInfo> getCocktailInfoById(int cocktailId) async {
+    final response = await client.get(
+      'https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=$cocktailId',
+      headers: {'Content-Type': 'application/json'},
+    );
+
+    if (response.statusCode == 200) {
+      return CocktailInfoModel.fromJson(json.decode(response.body));
+    } else {
+      throw ServerException();
+    }
   }
 
   @override
-  Future<CocktailInfoList> getCocktailsByFirstLetter(String letter) {
-    // TODO: implement getCocktailsByFirstLetter
-    throw UnimplementedError();
+  Future<CocktailInfoList> getCocktailsByFirstLetter(String letter) async {
+    final response = await client.get(
+      'https://www.thecocktaildb.com/api/json/v1/1/search.php?f=$letter',
+      headers: {'Content-Type': 'application/json'},
+    );
+
+    if (response.statusCode == 200) {
+      return CocktailInfoListModel.fromJson(json.decode(response.body));
+    } else {
+      throw ServerException();
+    }
   }
 
   @override
-  Future<CocktailInfoList> getCocktailsBySearchResults(String searchTerm) {
-    // TODO: implement getCocktailsBySearchResults
-    throw UnimplementedError();
+  Future<CocktailInfoList> getCocktailsBySearchResults(String searchTerm) async {
+    final response = await client.get(
+      'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=$searchTerm',
+      headers: {'Content-Type': 'application/json'},
+    );
+
+    if (response.statusCode == 200) {
+      return CocktailInfoListModel.fromJson(json.decode(response.body));
+    } else {
+      throw ServerException();
+    }
   }
 
   @override
-  Future<PartialCocktailInfoList> getCocktailsFilteredByCategory(String category) {
-    // TODO: implement getCocktailsFilteredByCategory
-    throw UnimplementedError();
+  Future<PartialCocktailInfoList> getCocktailsFilteredByCategory(String category) async {
+    final response = await client.get(
+      'https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=$category',
+      headers: {'Content-Type': 'application/json'},
+    );
+
+    if (response.statusCode == 200) {
+      return PartialCocktailInfoListModel.fromJson(json.decode(response.body));
+    } else {
+      throw ServerException();
+    }
   }
 
   @override
-  Future<PartialCocktailInfoList> getCocktailsFilteredByGlass(String glass) {
-    // TODO: implement getCocktailsFilteredByGlass
-    throw UnimplementedError();
+  Future<PartialCocktailInfoList> getCocktailsFilteredByGlass(String glass) async {
+    final response = await client.get(
+      'https://www.thecocktaildb.com/api/json/v1/1/filter.php?g=$glass',
+      headers: {'Content-Type': 'application/json'},
+    );
+
+    if (response.statusCode == 200) {
+      return PartialCocktailInfoListModel.fromJson(json.decode(response.body));
+    } else {
+      throw ServerException();
+    }
   }
 
   @override
-  Future<PartialCocktailInfoList> getCocktailsFilteredByIngredient(String ingredient) {
-    // TODO: implement getCocktailsFilteredByIngredient
-    throw UnimplementedError();
+  Future<PartialCocktailInfoList> getCocktailsFilteredByIngredient(String ingredient) async {
+    final response = await client.get(
+      'https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=$ingredient',
+      headers: {'Content-Type': 'application/json'},
+    );
+
+    if (response.statusCode == 200) {
+      return PartialCocktailInfoListModel.fromJson(json.decode(response.body));
+    } else {
+      throw ServerException();
+    }
   }
 
   @override
-  Future<Glasses> getGlasses() {
-    // TODO: implement getGlasses
-    throw UnimplementedError();
+  Future<Glasses> getGlasses() async {
+    final response = await client.get(
+      'https://www.thecocktaildb.com/api/json/v1/1/list.php?g=list',
+      headers: {'Content-Type': 'application/json'},
+    );
+
+    if (response.statusCode == 200) {
+      return GlassesModel.fromJson(json.decode(response.body));
+    } else {
+      throw ServerException();
+    }
   }
 
   @override
-  Future<IngredientInfo> getIngredientInfoById(int ingredientId) {
-    // TODO: implement getIngredientInfoById
-    throw UnimplementedError();
+  Future<IngredientInfo> getIngredientInfoById(int ingredientId) async {
+    final response = await client.get(
+      'https://www.thecocktaildb.com/api/json/v1/1/lookup.php?iid=$ingredientId',
+      headers: {'Content-Type': 'application/json'},
+    );
+
+    if (response.statusCode == 200) {
+      return IngredientInfoModel.fromJson(json.decode(response.body));
+    } else {
+      throw ServerException();
+    }
   }
 
   @override
-  Future<Ingredients> getIngredients() {
-    // TODO: implement getIngredients
-    throw UnimplementedError();
+  Future<Ingredients> getIngredients() async {
+    final response = await client.get(
+      'https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list',
+      headers: {'Content-Type': 'application/json'},
+    );
+
+    if (response.statusCode == 200) {
+      return IngredientsModel.fromJson(json.decode(response.body));
+    } else {
+      throw ServerException();
+    }
   }
 
   @override
-  Future<CocktailInfo> getRandomCocktialInfo() {
-    // TODO: implement getRandomCocktialInfo
-    throw UnimplementedError();
+  Future<CocktailInfo> getRandomCocktialInfo() async {
+    final response = await client.get(
+      'https://www.thecocktaildb.com/api/json/v1/1/random.php',
+      headers: {'Content-Type': 'application/json'},
+    );
+
+    if (response.statusCode == 200) {
+      return CocktailInfoModel.fromJson(json.decode(response.body));
+    } else {
+      throw ServerException();
+    }
   }
 }
